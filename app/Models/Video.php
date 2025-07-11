@@ -12,8 +12,6 @@ class Video extends Model
 
     /**
      * Atribut yang dapat diisi secara massal.
-     *
-     * @var array<int, string>
      */
     protected $fillable = [
         'title',
@@ -23,12 +21,22 @@ class Video extends Model
         'duration',
     ];
 
+    // =================================================================
+    // TAMBAHKAN PROPERTI INI
+    // =================================================================
+    /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array
+     */
+    protected $appends = ['url'];
+    // =================================================================
+
+
     /**
      * Accessor untuk mendapatkan URL lengkap ke file video.
-     *
-     * @return string
      */
-      public function getUrlAttribute()
+     public function getUrlAttribute()
     {
         return asset('storage/' . $this->file_path);
     }

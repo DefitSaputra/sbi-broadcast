@@ -43,23 +43,19 @@
         </template>
 
                 {{-- Tampilan "Tidak Ada Siaran" (muncul jika tidak ada siaran) --}}
-        <template x-if="!currentBroadcast">
+            <template x-if="!currentBroadcast">
             <div class="text-center transition-opacity duration-500">
                 <img src="{{ asset('images/logo-sbi.png') }}" alt="Logo" class="h-16 block mx-auto mb-4 opacity-50">
                 <h1 class="text-3xl font-bold" x-text="message"></h1>
-                
-                {{-- PERBAIKAN DI SINI --}}
-                {{-- Kita bungkus paragraf info jadwal berikutnya dengan <template x-if> --}}
                 <template x-if="nextBroadcast">
                     <p class="text-gray-400 mt-2">
                         Siaran selanjutnya <span x-text="nextBroadcast.title"></span> akan dimulai <span x-text="timeUntilNext"></span>.
                     </p>
                 </template>
-                
-                {{-- Dan kita bungkus pesan default dengan kebalikannya --}}
+        
                 <template x-if="!nextBroadcast">
                     <p class="text-gray-400 mt-2">
-                        Silakan kembali ngoding habis jumatan.
+                        Saat Ini Tidak Ada Siaran.
                     </p>
                 </template>
                 

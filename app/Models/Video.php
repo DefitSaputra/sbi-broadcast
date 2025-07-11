@@ -32,4 +32,9 @@ class Video extends Model
     {
         return asset('storage/' . $this->file_path);
     }
+
+     public function schedules()
+    {
+        return $this->hasMany(Schedule::class);
+    }
 }

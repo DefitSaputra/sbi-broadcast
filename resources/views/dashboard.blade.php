@@ -10,14 +10,11 @@
             
             {{-- Hero Section dengan Gambar Latar --}}
             <div class="relative bg-white shadow-xl sm:rounded-lg overflow-hidden mb-8">
-                {{-- Gambar Latar --}}
                 <div class="absolute inset-0">
                     <img class="h-full w-full object-cover" src="{{ asset('images/bg-sbi3.jpeg') }}" alt="Latar belakang industri">
-                    {{-- Overlay Gelap --}}
                     <div class="absolute inset-0 bg-gray-900 bg-opacity-60"></div>
                 </div>
                 
-                {{-- Konten Teks di atas Gambar --}}
                 <div class="relative px-6 py-16 sm:px-12 sm:py-24 lg:px-16">
                     <h1 class="text-center text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
                         <span class="block text-white">Selamat Datang di</span>
@@ -45,12 +42,14 @@
                     </a>
                 </div>
 
-                <!-- Kartu 2: Menuju Penjadwalan (Placeholder) -->
+                <!-- Kartu 2: Menuju Penjadwalan -->
                 <div class="bg-white overflow-hidden shadow-md sm:rounded-lg p-6">
                     <h3 class="text-lg font-medium text-gray-900">Penjadwalan Siaran</h3>
                     <p class="mt-2 text-sm text-gray-600">Atur jadwal tayang untuk setiap video di galeri Anda.</p>
-                    <a href="#" class="mt-4 inline-block text-sm font-semibold text-gray-400 cursor-not-allowed" title="Fitur segera hadir">
-                        Buka Jadwal &rarr;
+                    
+                    {{-- PERBAIKAN: Mengubah link dari 'schedules.index' ke 'schedules.create' --}}
+                    <a href="{{ route('schedules.create') }}" class="mt-4 inline-block text-sm font-semibold text-indigo-600 hover:text-indigo-800">
+                        Buat Jadwal Baru &rarr;
                     </a>
                 </div>
             </div>

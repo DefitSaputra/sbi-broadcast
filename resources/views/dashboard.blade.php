@@ -1,4 +1,9 @@
+<head>
+    <title>Dashboard - Broadcast Management System</title>
+</head>
+
 <x-app-layout>
+    <title>Dashboard - Broadcast Management System</title>
     {{-- Mengganti <br> dengan padding yang lebih konsisten --}}
     <div class="py-6 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

@@ -1,3 +1,7 @@
+<head>
+    <title>Profile - Broadcast Management System</title>
+</head>
+
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">

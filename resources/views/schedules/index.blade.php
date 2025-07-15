@@ -1,4 +1,8 @@
 {{-- Menggunakan layout utama aplikasi agar navigasi dan header konsisten --}}
+<head>
+    <title>Manajemen Jadwal - Broadcast Management System</title>
+</head>
+
 <x-app-layout>
     {{-- Judul Halaman yang akan muncul di header --}}
     <x-slot name="header">

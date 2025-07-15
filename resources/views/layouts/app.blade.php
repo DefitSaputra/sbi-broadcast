@@ -7,24 +7,22 @@
 
         <title>{{ config('app.name', 'Laravel') }}</title>
 
-        <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+        
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-        <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
-
-        {{-- PERBAIKAN 1: Menambahkan stack untuk CSS --}}
+        
         @stack('styles')
     </head>
-    <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
+    <body class="antialiased"> {{-- Menghapus class 'font-sans' --}}
+        <div class="min-h-screen bg-gray-100 flex flex-col">
             @include('layouts.navigation')
 
-            <!-- Page Heading -->
             @if (isset($header))
                 <header class="bg-white shadow">
                     <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
@@ -33,13 +31,53 @@
                 </header>
             @endif
 
-            <!-- Page Content -->
-            <main>
+            <main class="flex-grow"> {{-- Menambahkan class flex-grow agar footer tetap di bawah --}}
                 {{ $slot }}
             </main>
-        </div>
 
-        {{-- PERBAIKAN 2: Menambahkan stack untuk JavaScript --}}
+            <footer class="bg-sbi-dark-gray text-gray-300 py-12">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                        <div class="space-y-4">
+                            <img src="{{ asset('images/logo-white.svg') }}" alt="Solusi Bangun Indonesia" class="h-10">
+                            <p class="text-sm text-gray-400">Copyright © 2024. SBI All rights reserved.</p>
+                        </div>
+
+                        <div class="space-y-4">
+                            <h4 class="font-bold text-white">Address</h4>
+                            <p class="text-sm leading-relaxed">Jl. TB Simatupang No. 22-26, Talavera Suite, Jakarta 12430</p>
+                            <h4 class="font-bold text-white pt-4">Social Media</h4>
+                            <div class="flex space-x-4">
+                                <a href="#" class="hover:text-sbi-green"><i class="fab fa-instagram fa-lg"></i></a>
+                                <a href="#" class="hover:text-sbi-green"><i class="fab fa-linkedin-in fa-lg"></i></a>
+                                <a href="#" class="hover:text-sbi-green"><i class="fab fa-facebook-f fa-lg"></i></a>
+                                <a href="#" class="hover:text-sbi-green"><i class="fab fa-twitter fa-lg"></i></a>
+                            </div>
+                        </div>
+
+                        <div class="space-y-4">
+                            <h4 class="font-bold text-white">Telephone</h4>
+                            <p class="text-sm">Tel +62 21 29861000<br>Fax +62 21 29863333</p>
+                            <h4 class="font-bold text-white pt-4">Email</h4>
+                            <p class="text-sm">corp.comm-sbi@sig.id</p>
+                        </div>
+                        
+                        <div class="space-y-2 flex flex-col">
+                            <a href="#" class="hover:text-sbi-green text-sm">Tentang Kami</a>
+                            <a href="#" class="hover:text-sbi-green text-sm">Investor</a>
+                            <a href="#" class="hover:text-sbi-green text-sm">Produk & Layanan</a>
+                            <a href="#" class="hover:text-sbi-green text-sm">Keberlanjutan</a>
+                            <a href="#" class="hover:text-sbi-green text-sm">Kontak</a>
+                        </div>
+                    </div>
+                    <div class="mt-12 pt-8 border-t border-gray-700 flex flex-col sm:flex-row justify-between items-center text-sm">
+                        <p class="text-gray-400">Member of <a href="https://sig.id" target="_blank"><img src="{{ asset('images/SIG-Logo-White.svg') }}" alt="SIG Logo" class="inline h-5 ml-2"></a></p>
+                        <a href="#" class="text-gray-400 hover:text-white mt-4 sm:mt-0">Kebijakan Privasi</a>
+                    </div>
+                </div>
+            </footer>
+             </div>
+        
         @stack('scripts')
     </body>
 </html>

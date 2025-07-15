@@ -11,8 +11,15 @@ export default {
 
     theme: {
         extend: {
+            // MENAMBAHKAN WARNA BRAND SBI
+            colors: {
+                'sbi-green': '#c4d600',
+                'sbi-red': '#e41e26',
+                'sbi-dark-gray': '#212529',
+            },
+            // MENGGANTI FONT UTAMA MENJADI POPPINS
             fontFamily: {
-                sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                sans: ['Poppins', ...defaultTheme.fontFamily.sans],
             },
         },
     },

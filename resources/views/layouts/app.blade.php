@@ -48,10 +48,10 @@
                             <p class="text-sm leading-relaxed">Jl. TB Simatupang No. 22-26, Talavera Suite, Jakarta 12430</p>
                             <h4 class="font-bold text-white pt-4">Social Media</h4>
                             <div class="flex space-x-4">
-                                <a href="#" class="hover:text-sbi-green"><i class="fab fa-instagram fa-lg"></i></a>
-                                <a href="#" class="hover:text-sbi-green"><i class="fab fa-linkedin-in fa-lg"></i></a>
-                                <a href="#" class="hover:text-sbi-green"><i class="fab fa-facebook-f fa-lg"></i></a>
-                                <a href="#" class="hover:text-sbi-green"><i class="fab fa-twitter fa-lg"></i></a>
+                                <a href="https://www.instagram.com/solusibangunid/#" class="hover:text-sbi-green"><i class="fab fa-instagram fa-lg"></i></a>
+                                <a href="https://www.linkedin.com/company/solusi-bangun-indonesia/" class="hover:text-sbi-green"><i class="fab fa-linkedin-in fa-lg"></i></a>
+                                <a href="https://www.facebook.com/people/PT-Solusi-Bangun-Indonesia-Tbk/61568142358066/?locale=id_ID" class="hover:text-sbi-green"><i class="fab fa-facebook-f fa-lg"></i></a>
+                                <a href="https://x.com/solusibangunid" class="hover:text-sbi-green"><i class="fab fa-twitter fa-lg"></i></a>
                             </div>
                         </div>
 

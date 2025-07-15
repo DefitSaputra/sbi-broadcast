@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     // Arahkan halaman utama ke halaman siaran jika diinginkan, atau ke login
-    return redirect()->route('siaran.index'); 
+    return redirect()->route('dashboard'); 
 });
 
 // --- Rute Publik untuk Penonton ---

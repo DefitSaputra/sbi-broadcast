@@ -40,12 +40,12 @@
                     <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                         <div class="space-y-4">
                             <img src="{{ asset('images/logo-white.svg') }}" alt="Solusi Bangun Indonesia" class="h-10">
-                            <p class="text-sm text-gray-400">Copyright © 2024. SBI All rights reserved.</p>
+                            <p class="text-sm text-gray-400">Copyright © 2025. SBI All rights reserved.</p>
                         </div>
 
                         <div class="space-y-4">
                             <h4 class="font-bold text-white">Address</h4>
-                            <p class="text-sm leading-relaxed">Jl. TB Simatupang No. 22-26, Talavera Suite, Jakarta 12430</p>
+                            <p class="text-sm leading-relaxed">Jl. Ir. Juanda, Padaramai, Karangtalun, Kec. Cilacap Utara, Kabupaten Cilacap, Jawa Tengah 53234</p>
                             <h4 class="font-bold text-white pt-4">Social Media</h4>
                             <div class="flex space-x-4">
                                 <a href="https://www.instagram.com/solusibangunid/#" class="hover:text-sbi-green"><i class="fab fa-instagram fa-lg"></i></a>
@@ -63,11 +63,11 @@
                         </div>
                         
                         <div class="space-y-2 flex flex-col">
-                            <a href="#" class="hover:text-sbi-green text-sm">Tentang Kami</a>
-                            <a href="#" class="hover:text-sbi-green text-sm">Investor</a>
-                            <a href="#" class="hover:text-sbi-green text-sm">Produk & Layanan</a>
-                            <a href="#" class="hover:text-sbi-green text-sm">Keberlanjutan</a>
-                            <a href="#" class="hover:text-sbi-green text-sm">Kontak</a>
+                            <a href="{{ route('dashboard') }}" class="hover:text-sbi-green text-sm">Dashboard</a>
+                            <a href="{{ route('videos.index') }}" class="hover:text-sbi-green text-sm">Manajemen Video</a>
+                            <a href="{{ route('schedules.index') }}" class="hover:text-sbi-green text-sm">Manajemen Jadwal</a>
+                            <a href="{{ route('siaran.index') }}" class="hover:text-sbi-green text-sm">Siaran</a>
+                            <a href="{{ route('profile.edit') }}" class="hover:text-sbi-green text-sm">Profile</a>
                         </div>
                     </div>
                     <div class="mt-12 pt-8 border-t border-gray-700 flex flex-col sm:flex-row justify-between items-center text-sm">

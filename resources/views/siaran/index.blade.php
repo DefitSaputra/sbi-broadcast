@@ -80,11 +80,25 @@
             nextBroadcast: null,
             message: 'Memuat Jadwal...',
             timeUntilNext: '',
+            userInteracted: false, // Tambahkan state untuk melacak interaksi pengguna
             
             init() {
+                // Tambahkan event listener untuk interaksi pengguna
+                document.addEventListener('click', () => {
+                    this.userInteracted = true;
+                    this.tryUnmuteVideo();
+                });
+                
                 this.fetchSchedule();
                 setInterval(() => this.fetchSchedule(), 15000);
                 setInterval(() => this.updateCountdown(), 1000);
+            },
+
+            // Method baru untuk mencoba unmute video
+            tryUnmuteVideo() {
+                if (this.$refs.videoPlayer && this.currentBroadcast) {
+                    this.$refs.videoPlayer.muted = false;
+                }
             },
 
             fetchSchedule() {
@@ -96,39 +110,32 @@
                         if (newBroadcastId !== oldBroadcastId) {
                             this.currentBroadcast = response.data.current;
                             
-                            // =================================================================
-                            // AWAL DARI BLOK PERBAIKAN UTAMA
-                            // =================================================================
                             this.$nextTick(() => {
                                 if (this.currentBroadcast && this.$refs.videoPlayer) {
                                     const videoPlayer = this.$refs.videoPlayer;
 
-                                    // 1. Definisikan fungsi untuk memulai pemutaran
                                     const startPlayback = () => {
-                                        videoPlayer.muted = true; // Pastikan tetap muted
+                                        // Mulai dengan muted (sesuai kebijakan browser)
+                                        videoPlayer.muted = true;
                                         const playPromise = videoPlayer.play();
 
                                         if (playPromise !== undefined) {
-                                            playPromise.catch(error => {
+                                            playPromise.then(() => {
+                                                // Jika pengguna sudah berinteraksi, langsung unmute
+                                                if (this.userInteracted) {
+                                                    videoPlayer.muted = false;
+                                                }
+                                            }).catch(error => {
                                                 console.error("Autoplay digagalkan oleh browser:", error);
                                             });
                                         }
                                     };
                                     
-                                    // 2. Hapus listener lama untuk mencegah duplikasi jika ada
                                     videoPlayer.removeEventListener('canplay', startPlayback);
-                                    
-                                    // 3. Tambahkan "pendengar acara" baru. Fungsi startPlayback
-                                    //    HANYA akan dijalankan setelah browser memberi sinyal 'canplay'
                                     videoPlayer.addEventListener('canplay', startPlayback, { once: true });
-
-                                    // 4. Muat sumber video baru. Ini akan memicu event 'canplay' saat siap.
                                     videoPlayer.load();
                                 }
                             });
-                            // =================================================================
-                            // AKHIR DARI BLOK PERBAIKAN UTAMA
-                            // =================================================================
                         }
                         
                         this.nextBroadcast = response.data.next;

@@ -16,9 +16,13 @@
                         {{ __('Manajemen Video') }}
                     </x-nav-link>
                     
-                    {{-- DIUBAH: Mengarahkan ke halaman utama manajemen jadwal --}}
                     <x-nav-link :href="route('schedules.index')" :active="request()->routeIs('schedules.*')">
                         {{ __('Manajemen Jadwal') }}
+                    </x-nav-link>
+
+                    <!-- ==== LINK BARU DITAMBAHKAN DI SINI ==== -->
+                    <x-nav-link :href="route('recurring-schedules.index')" :active="request()->routeIs('recurring-schedules.*')">
+                        {{ __('Jadwal Berulang') }}
                     </x-nav-link>
 
                     <x-nav-link :href="route('siaran.index')" :active="request()->routeIs('siaran.index')" target="_blank">
@@ -75,12 +79,16 @@
                 {{ __('Manajemen Video') }}
             </x-responsive-nav-link>
             
-            {{-- DIUBAH (Responsive): Mengarahkan ke halaman utama manajemen jadwal --}}
             <x-responsive-nav-link :href="route('schedules.index')" :active="request()->routeIs('schedules.*')">
                 {{ __('Manajemen Jadwal') }}
             </x-responsive-nav-link>
 
-             <x-responsive-nav-link :href="route('siaran.index')" :active="request()->routeIs('siaran.index')" target="_blank">
+            <!-- ==== LINK BARU DITAMBAHKAN DI SINI (RESPONSIVE) ==== -->
+            <x-responsive-nav-link :href="route('recurring-schedules.index')" :active="request()->routeIs('recurring-schedules.*')">
+                {{ __('Jadwal Berulang') }}
+            </x-responsive-nav-link>
+
+            <x-responsive-nav-link :href="route('siaran.index')" :active="request()->routeIs('siaran.index')" target="_blank">
                 {{ __('Lihat Siaran') }}
             </x-responsive-nav-link>
         </div>

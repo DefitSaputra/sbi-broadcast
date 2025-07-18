@@ -1,56 +1,47 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\VideoController;
 use App\Http\Controllers\BroadcastController;
-use App\Http\Controllers\DashboardController; // <-- TAMBAHKAN USE STATEMENT INI
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\RecurringScheduleController;
 
 /*
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
-|
-| Di sinilah Anda dapat mendaftarkan rute web untuk aplikasi Anda. Rute
-| ini dimuat oleh RouteServiceProvider dan semuanya akan
-| ditugaskan ke grup middleware "web".
-|
 */
 
+// --- Rute Publik ---
 Route::get('/', function () {
-    // Arahkan halaman utama ke halaman login atau dashboard
-    return redirect()->route('login'); 
+    return redirect()->route('login');
 });
-
-// --- Rute Publik untuk Penonton ---
 Route::get('/siaran', [BroadcastController::class, 'index'])->name('siaran.index');
-
-// --- Rute API untuk Halaman Siaran (dipanggil oleh JavaScript) ---
-Route::get('/api/schedule', [BroadcastController::class, 'getScheduleApi'])->name('api.schedule');
+Route::get('/api/schedule', [BroadcastController::class, 'getScheduleApi'])->name('api.broadcast.schedule');
 
 
-// --- Grup untuk Admin yang Sudah Login ---
-Route::middleware('auth')->group(function () {
+// --- Grup untuk Admin yang Sudah Login & Terverifikasi ---
+Route::middleware(['auth', 'verified'])->group(function () {
     
-    // --- PERBAIKAN: Arahkan rute dashboard ke DashboardController ---
-    Route::get('/dashboard', [DashboardController::class, 'index'])
-        ->middleware('verified')
-        ->name('dashboard');
+    // Dashboard
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     // Profil
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    // Manajemen Video menggunakan resource controller
+    // Manajemen Video
     Route::resource('videos', VideoController::class);
 
-    // Manajemen Jadwal menggunakan resource controller
-    // Method show() tidak kita gunakan karena form edit ada di halaman index
+    // Manajemen Jadwal (Sekali Jalan)
     Route::resource('schedules', ScheduleController::class)->except(['show', 'create']);
 
-});
+    // Manajemen Jadwal Berulang
+    Route::resource('recurring-schedules', RecurringScheduleController::class)->except(['show', 'create']);
 
+});
 
 require __DIR__.'/auth.php';

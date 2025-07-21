@@ -7,6 +7,7 @@ use App\Http\Controllers\VideoController;
 use App\Http\Controllers\BroadcastController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\RecurringScheduleController;
+use App\Http\Controllers\RecurringBroadcastController; // <-- TAMBAHKAN INI
 
 /*
 |--------------------------------------------------------------------------
@@ -18,8 +19,14 @@ use App\Http\Controllers\RecurringScheduleController;
 Route::get('/', function () {
     return redirect()->route('login');
 });
+
+// Rute untuk Siaran Terjadwal (Sekali Jalan)
 Route::get('/siaran', [BroadcastController::class, 'index'])->name('siaran.index');
 Route::get('/api/schedule', [BroadcastController::class, 'getScheduleApi'])->name('api.broadcast.schedule');
+
+// Rute untuk Siaran Berulang (BARU)
+Route::get('/siaran-berulang', [RecurringBroadcastController::class, 'index'])->name('siaran.recurring.index');
+Route::get('/api/recurring-schedule', [RecurringBroadcastController::class, 'getScheduleApi'])->name('api.recurring.schedule');
 
 
 // --- Grup untuk Admin yang Sudah Login & Terverifikasi ---

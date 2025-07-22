@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Siaran Berulang - SBI</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <style>
         html, body { height: 100%; overflow: hidden; background-color: #111827; color: white; font-family: 'Inter', sans-serif; }
@@ -17,7 +17,7 @@
 </head>
 <body class="flex items-center justify-center">
 
-    <div x-data="broadcastManager(@json($allSchedules))" x-init="init()" class="w-full h-full">
+    <div x-data="broadcastManager(@js($allSchedules))" x-init="init()" class="w-full h-full">
 
         <!-- Tampilan Video Player -->
         <div x-show="currentBroadcast" x-cloak class="w-full h-full bg-black relative">
@@ -68,9 +68,9 @@
     </div>
 
     <script>
-    function broadcastManager(allSchedules = []) {
+    function broadcastManager(initialSchedules = []) {
         return {
-            allSchedules: allSchedules,
+            allSchedules: initialSchedules,
             currentBroadcast: null,
             message: 'Memuat Jadwal...',
             isMuted: true,
@@ -82,6 +82,8 @@
             ],
             
             init() {
+                console.log('Isi data "allSchedules" saat komponen dimuat:', this.allSchedules);
+                
                 // Tandai hari ini di kalender
                 const today = new Date().getDay(); // Minggu = 0, Senin = 1, ...
                 const dayIndex = this.days.findIndex(d => d.id === today);

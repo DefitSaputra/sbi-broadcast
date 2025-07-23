@@ -136,7 +136,7 @@ function broadcastSystem() {
     }
 }
 
-//selesai
+//selesai kayaknya ini
 </script>
 
 </body>

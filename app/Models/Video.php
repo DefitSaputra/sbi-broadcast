@@ -38,7 +38,7 @@ class Video extends Model
      */
      public function getUrlAttribute()
     {
-        return asset('storage/' . $this->file_path);
+        return asset('storage/' . $this->attributes['file_path']);
     }
 
      public function schedules()

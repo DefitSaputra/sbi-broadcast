@@ -80,7 +80,7 @@
             nextBroadcast: null,
             message: 'Memuat Jadwal...',
             timeUntilNext: '',
-            userInteracted: false, // Tambahkan state untuk melacak interaksi pengguna
+            userInteracted: false, 
             
             init() {
                 // Tambahkan event listener untuk interaksi pengguna

@@ -10,28 +10,40 @@ class RecurringSchedule extends Model
     use HasFactory;
 
     protected $fillable = [
-        'title',
         'video_id',
-        'days_of_week',
-        'start_time',
-        'end_time',
-        'running_text',
+        'title',
+        'days_of_week', // Menyimpan hari dalam format JSON array [1,2,3]
+        'start_time',   // Format time (08:00:00)
+        'end_time',     // Format time (09:00:00)
+        'running_text'
     ];
 
-    /**
-     * Memberitahu Laravel untuk secara otomatis mengubah
-     * kolom JSON 'days_of_week' menjadi array PHP.
-     */
     protected $casts = [
-        'days_of_week' => 'array',
+        'days_of_week' => 'array', // Otomatis decode JSON ke array
+        'start_time' => 'datetime:H:i:s',
+        'end_time' => 'datetime:H:i:s'
     ];
 
-    /**
-     * Mendefinisikan relasi bahwa setiap jadwal berulang
-     * memiliki satu video.
-     */
     public function video()
     {
         return $this->belongsTo(Video::class);
+    }
+
+    // Accessor untuk memudahkan pembacaan
+    public function getDaysOfWeekNamesAttribute()
+    {
+        $dayMap = [
+            0 => 'Minggu',
+            1 => 'Senin',
+            2 => 'Selasa',
+            3 => 'Rabu',
+            4 => 'Kamis',
+            5 => 'Jumat',
+            6 => 'Sabtu'
+        ];
+
+        return array_map(function($day) use ($dayMap) {
+            return $dayMap[$day] ?? $day;
+        }, $this->days_of_week ?? []);
     }
 }

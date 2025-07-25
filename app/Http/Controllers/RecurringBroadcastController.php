@@ -13,11 +13,6 @@ class RecurringBroadcastController extends Controller
      */
     public function index()
     {
-        // PERBAIKAN:
-        // Query orderByRaw("FIELD(days_of_week, ...)") tidak akan berfungsi
-        // pada kolom JSON. Sebagai gantinya, kita ambil semua jadwal yang
-        // diurutkan berdasarkan waktu mulai saja. Logika pengelompokan per hari
-        // lebih baik ditangani di frontend (tampilan Blade/Vue/Alpine).
         $allSchedules = RecurringSchedule::with('video')
             ->orderBy('start_time')
             ->get();
@@ -35,7 +30,7 @@ class RecurringBroadcastController extends Controller
     {
         $now = Carbon::now(config('app.timezone'));
         $dayOfWeek = $now->dayOfWeek;
-        $currentTime = $now->toTimeString(); // Menggunakan toTimeString() lebih aman
+        $currentTime = $now->toTimeString();
 
         // 1. Cari jadwal yang aktif sekarang (Query ini sudah bagus)
         $current = RecurringSchedule::with('video')
@@ -83,8 +78,6 @@ class RecurringBroadcastController extends Controller
         }
 
         // Jika tidak ada lagi jadwal hari ini, cari di hari-hari berikutnya.
-        // Kita ambil semua jadwal sekali saja untuk diolah di PHP, ini jauh
-        // lebih cepat daripada 7x query ke database.
         $allSchedules = RecurringSchedule::with('video')
             ->orderBy('start_time')
             ->get();
@@ -94,7 +87,6 @@ class RecurringBroadcastController extends Controller
         for ($i = 1; $i <= 7; $i++) {
             $dayOrder[] = ($currentDayOfWeek + $i) % 7;
         }
-        // Contoh jika hari ini Rabu (3), $dayOrder akan menjadi: [4, 5, 6, 0, 1, 2, 3]
 
         // Lakukan iterasi berdasarkan urutan hari yang sudah dibuat.
         foreach ($dayOrder as $day) {
@@ -107,6 +99,6 @@ class RecurringBroadcastController extends Controller
             }
         }
 
-        return null; // Tidak ada jadwal berikutnya yang ditemukan.
+        return null;
     }
 }

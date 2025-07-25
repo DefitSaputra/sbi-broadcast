@@ -52,8 +52,6 @@ class VideoController extends Controller
      */
     public function show(Video $video)
     {
-        // Anda bisa membuat view khusus 'videos.show' jika perlu,
-        // tapi untuk sekarang, mengarahkan ke halaman edit sudah cukup.
         return view('videos.edit', compact('video'));
     }
 

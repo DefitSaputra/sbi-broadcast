@@ -71,7 +71,6 @@ class RecurringScheduleController extends Controller
         $data['end_time'] = $data['end_time'] . ':00';
 
         // 2. PERBAIKAN KUNCI: Paksa setiap item di 'days_of_week' menjadi integer
-        // Ini mengubah ["3", "4", "5"] menjadi [3, 4, 5]
         $data['days_of_week'] = array_map('intval', $data['days_of_week']);
 
         return $data;

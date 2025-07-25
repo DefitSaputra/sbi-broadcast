@@ -28,8 +28,7 @@
 
     /**
      * Menyediakan data jadwal untuk API.
-     * Inilah yang akan dipanggil oleh JavaScript.
-     */
+     **/
     public function getScheduleApi()
     {
         $now = Carbon::now();
@@ -42,7 +41,6 @@
             ->first();
 
         // 2. Cari jadwal BERIKUTNYA yang akan tayang
-        // (yang waktu mulainya paling dekat di masa depan)
         $next = Schedule::with('video')
             ->where('start_time', '>', $now)
             ->orderBy('start_time', 'asc')

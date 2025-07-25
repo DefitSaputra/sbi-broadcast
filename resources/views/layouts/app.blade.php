@@ -19,7 +19,7 @@
         
         @stack('styles')
     </head>
-    <body class="antialiased"> {{-- Menghapus class 'font-sans' --}}
+    <body class="antialiased">
         <div class="min-h-screen bg-gray-100 flex flex-col">
             @include('layouts.navigation')
 
@@ -31,7 +31,7 @@
                 </header>
             @endif
 
-            <main class="flex-grow"> {{-- Menambahkan class flex-grow agar footer tetap di bawah --}}
+            <main class="flex-grow">
                 {{ $slot }}
             </main>
 
@@ -70,14 +70,24 @@
                             <a href="{{ route('profile.edit') }}" class="hover:text-sbi-green text-sm">Profile</a>
                         </div>
                     </div>
-                    <div class="mt-12 pt-8 border-t border-gray-700 flex flex-col sm:flex-row justify-between items-center text-sm">
-                        <p class="text-gray-400">Member of <a href="https://sig.id" target="_blank"><img src="{{ asset('images/SIG-Logo-White.svg') }}" alt="SIG Logo" class="inline h-5 ml-2"></a></p>
-                        <a href="#" class="text-gray-400 hover:text-white mt-4 sm:mt-0">Kebijakan Privasi</a>
                     </div>
-                </div>
             </footer>
-             </div>
-        
+
+            <div class="bg-white border-t">
+                <div class="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8 flex justify-between items-center text-sm">
+                    <a href="#" class="text-gray-600 hover:text-black">
+                        Kebijakan Privasi
+                    </a>
+
+                    <p class="text-gray-600">
+                        Member of 
+                        <a href="https://sig.id" target="_blank"><img src="{{ asset('images/SIG-Logo-Dark.svg') }}" alt="SIG Logo" class="inline h-5 ml-2"></a>
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    
         @stack('scripts')
     </body>
 </html>

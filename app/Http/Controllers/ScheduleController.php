@@ -49,7 +49,7 @@ class ScheduleController extends Controller
         return view('schedules.index', [
             'schedules' => $schedules,
             'videos' => $videos,
-            'scheduleToEdit' => $schedule // Ini kunci untuk form edit
+            'scheduleToEdit' => $schedule
         ]);
     }
 

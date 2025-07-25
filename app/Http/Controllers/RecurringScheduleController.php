@@ -68,7 +68,7 @@ class RecurringScheduleController extends Controller
     {
         // 1. Perbaiki masalah waktu (selisih detik)
         $data['start_time'] = $data['start_time'] . ':00';
-        $data['end_time'] = $data['end_time'] . ':59';
+        $data['end_time'] = $data['end_time'] . ':00';
 
         // 2. PERBAIKAN KUNCI: Paksa setiap item di 'days_of_week' menjadi integer
         // Ini mengubah ["3", "4", "5"] menjadi [3, 4, 5]

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Siaran Rutin</title>
+    <title>Siaran Langsung Multi-Day</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
@@ -117,11 +117,7 @@ function broadcastSystem() {
             }
         },
         
-        // ==========================================================
-        // ### FUNGSI INI DIPERBAIKI (BUG FIX) ###
-        // ==========================================================
         unmutePlayer() {
-            // Pastikan userInteracted juga di set, dan video di-unmute dengan benar
             this.userInteracted = true; 
             const player = this.$refs.videoPlayer;
             if (player && this.currentBroadcast) {

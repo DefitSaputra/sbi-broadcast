@@ -4,11 +4,9 @@
 
 <x-app-layout>
     <title>Dashboard - Broadcast Management System</title>
-    {{-- Mengganti <br> dengan padding yang lebih konsisten --}}
     <div class="py-6 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             
-            {{-- Hero Section (Tetap sama, sesuai permintaan) --}}
             <div class="relative bg-white shadow-lg overflow-hidden mb-8" style="clip-path: polygon(0 0, 100% 0, 95% 100%, 0% 100%);">
                 <div class="absolute inset-0">
                     <img class="h-full w-full object-cover" src="{{ asset('images/bg-sbi3.jpeg') }}" alt="Background industri">
@@ -47,10 +45,8 @@
                 </div>
             </div>
 
-            {{-- Stats Section --}}
             <div class="mb-12">
                 <div class="grid grid-cols-1 md:grid-cols-4 gap-1">
-                    {{-- Stat Card 1: Total Video --}}
                     <div class="bg-white p-8 relative overflow-hidden group hover:bg-lime-50 transition-all duration-500 shadow-lg hover:shadow-xl">
                         <div class="absolute inset-0 bg-gradient-to-br from-lime-100 to-white opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                         <div class="relative z-10">
@@ -72,7 +68,6 @@
                         </div>
                     </div>
 
-                    {{-- Stat Card 2: Total Jadwal Saat Ini --}}
                     <div class="bg-white p-8 relative overflow-hidden group hover:bg-blue-50 transition-all duration-500 shadow-lg hover:shadow-xl">
                         <div class="absolute inset-0 bg-gradient-to-br from-blue-100 to-white opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                         <div class="relative z-10">
@@ -94,7 +89,6 @@
                         </div>
                     </div>
 
-                    {{-- Stat Card 3: Jadwal Mendatang --}}
                     <div class="bg-white p-8 relative overflow-hidden group hover:bg-purple-50 transition-all duration-500 shadow-lg hover:shadow-xl">
                         <div class="absolute inset-0 bg-gradient-to-br from-purple-100 to-white opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                         <div class="relative z-10">
@@ -116,7 +110,6 @@
                         </div>
                     </div>
 
-                    {{-- Stat Card 4: Total Semua Jadwal --}}
                     <div class="bg-white p-8 relative overflow-hidden group hover:bg-amber-50 transition-all duration-500 shadow-lg hover:shadow-xl">
                         <div class="absolute inset-0 bg-gradient-to-br from-amber-100 to-white opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                         <div class="relative z-10">
@@ -140,10 +133,7 @@
                 </div>
             </div>
 
-            {{-- Main Content Section (Disederhanakan & Dinamis) --}}
-            {{-- Main Content Section --}}
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
-                {{-- Video Management Card --}}
                 <div class="bg-white shadow-lg rounded-xl overflow-hidden relative group hover:shadow-2xl transition-all duration-300 col-span-1">
                     <div class="absolute inset-0 bg-gradient-to-br from-lime-50 to-white opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     <div class="relative p-6 h-full flex flex-col">
@@ -189,14 +179,13 @@
                     </div>
                 </div>
 
-                {{-- One-Time Schedule Management Card --}}
                 <div class="bg-white shadow-lg rounded-xl overflow-hidden relative group hover:shadow-2xl transition-all duration-300 col-span-1">
                     <div class="absolute inset-0 bg-gradient-to-br from-blue-50 to-white opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     <div class="relative p-6 h-full flex flex-col">
                         <div class="flex items-start justify-between mb-4">
                             <div>
                                 <p class="text-sbi-red font-semibold text-sm mb-2 uppercase tracking-wider">Manajemen Siaran</p>
-                                <h3 class="text-2xl font-black text-gray-900 leading-tight">Jadwal One-Time</h3>
+                                <h3 class="text-2xl font-black text-gray-900 leading-tight">Jadwal One-Day</h3>
                             </div>
                             <div class="p-3 bg-blue-100 rounded-lg group-hover:bg-blue-200 transition-colors">
                                 <svg class="w-6 h-6 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -208,7 +197,6 @@
                             Atur jadwal tayang satu kali dengan sistem penjadwalan cerdas untuk memaksimalkan jangkauan audiens.
                         </p>
                         
-                        {{-- Active Schedules --}}
                         <div class="mb-4">
                             <h4 class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Siaran Aktif</h4>
                             <ul class="space-y-2">
@@ -237,14 +225,13 @@
                     </div>
                 </div>
 
-                {{-- Recurring Schedule Management Card --}}
                 <div class="bg-white shadow-lg rounded-xl overflow-hidden relative group hover:shadow-2xl transition-all duration-300 col-span-1">
                     <div class="absolute inset-0 bg-gradient-to-br from-purple-50 to-white opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     <div class="relative p-6 h-full flex flex-col">
                         <div class="flex items-start justify-between mb-4">
                             <div>
                                 <p class="text-sbi-red font-semibold text-sm mb-2 uppercase tracking-wider">Manajemen Siaran</p>
-                                <h3 class="text-2xl font-black text-gray-900 leading-tight">Jadwal Recurring</h3>
+                                <h3 class="text-2xl font-black text-gray-900 leading-tight">Jadwal Multi-Day</h3>
                             </div>
                             <div class="p-3 bg-purple-100 rounded-lg group-hover:bg-purple-200 transition-colors">
                                 <svg class="w-6 h-6 text-purple-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -256,7 +243,6 @@
                             Atur jadwal tayang berulang untuk konten reguler dengan pengaturan yang fleksibel dan mudah dikelola.
                         </p>
                         
-                        {{-- Next Occurrences --}}
                         <div class="mb-4">
                             <h4 class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Jadwal Berikutnya</h4>
                             <ul class="space-y-2">
@@ -289,14 +275,13 @@
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
-                {{-- Siaran One-Time Card --}}
                 <div class="bg-white shadow-lg rounded-xl overflow-hidden relative group hover:shadow-2xl transition-all duration-300">
                     <div class="absolute inset-0 bg-gradient-to-br from-amber-50 to-white opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     <div class="relative p-6 h-full flex flex-col">
                         <div class="flex items-start justify-between mb-4">
                             <div>
                                 <p class="text-sbi-red font-semibold text-sm mb-2 uppercase tracking-wider">Pemantauan Siaran</p>
-                                <h3 class="text-2xl font-black text-gray-900 leading-tight">Siaran One-Time</h3>
+                                <h3 class="text-2xl font-black text-gray-900 leading-tight">Siaran One-Day Schedules</h3>
                             </div>
                             <div class="p-3 bg-amber-100 rounded-lg group-hover:bg-amber-200 transition-colors">
                                 <svg class="w-6 h-6 text-amber-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -306,10 +291,9 @@
                             </div>
                         </div>
                         <p class="text-gray-600 text-sm leading-relaxed mb-6 flex-grow">
-                            Pantau siaran one-time secara real-time dengan tampilan yang informatif dan interaktif.
+                            Pantau siaran one-day secara real-time dengan tampilan yang informatif dan interaktif.
                         </p>
                         
-                        {{-- Upcoming Schedules --}}
                         <div class="mb-4">
                             <h4 class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Akan Datang</h4>
                             <ul class="space-y-2">
@@ -339,14 +323,13 @@
                     </div>
                 </div>
 
-                {{-- Siaran Recurring Card --}}
                 <div class="bg-white shadow-lg rounded-xl overflow-hidden relative group hover:shadow-2xl transition-all duration-300">
                     <div class="absolute inset-0 bg-gradient-to-br from-rose-50 to-white opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     <div class="relative p-6 h-full flex flex-col">
                         <div class="flex items-start justify-between mb-4">
                             <div>
                                 <p class="text-sbi-red font-semibold text-sm mb-2 uppercase tracking-wider">Pemantauan Siaran</p>
-                                <h3 class="text-2xl font-black text-gray-900 leading-tight">Siaran Recurring</h3>
+                                <h3 class="text-2xl font-black text-gray-900 leading-tight">Siaran Multi-Day Schedules</h3>
                             </div>
                             <div class="p-3 bg-rose-100 rounded-lg group-hover:bg-rose-200 transition-colors">
                                 <svg class="w-6 h-6 text-rose-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -355,10 +338,9 @@
                             </div>
                         </div>
                         <p class="text-gray-600 text-sm leading-relaxed mb-6 flex-grow">
-                            Pantau siaran rutin dengan jadwal berulang dan dapatkan notifikasi untuk setiap sesi siaran.
+                            Pantau siaran multi-day dengan jadwal berulang dan dapatkan notifikasi untuk setiap sesi siaran.
                         </p>
                         
-                        {{-- Today's Schedule --}}
                         <div class="mb-4">
                             <h4 class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Hari Ini</h4>
                             <ul class="space-y-2">

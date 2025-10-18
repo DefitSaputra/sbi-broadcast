@@ -8,9 +8,6 @@ use Illuminate\Database\Eloquent\Collection;
 
 class RecurringBroadcastController extends Controller
 {
-    /**
-     * Menampilkan halaman siaran utama.
-     */
     public function index()
     {
         $allSchedules = RecurringSchedule::with('video')
@@ -23,16 +20,11 @@ class RecurringBroadcastController extends Controller
         ]);
     }
 
-    /**
-     * Menyediakan API untuk mendapatkan jadwal yang sedang berlangsung dan berikutnya.
-     */
     public function getScheduleApi()
     {
         $now = Carbon::now(config('app.timezone'));
         $dayOfWeek = $now->dayOfWeek;
         $currentTime = $now->toTimeString();
-
-        // 1. Cari jadwal yang aktif sekarang (Query ini sudah bagus)
         $current = RecurringSchedule::with('video')
             ->whereJsonContains('days_of_week', $dayOfWeek)
             ->where('start_time', '<=', $currentTime)
@@ -40,7 +32,6 @@ class RecurringBroadcastController extends Controller
             ->orderBy('start_time')
             ->first();
 
-        // 2. Cari jadwal berikutnya
         $next = $this->findNextBroadcast($dayOfWeek, $currentTime);
 
         return response()->json([
@@ -66,7 +57,6 @@ class RecurringBroadcastController extends Controller
      */
     private function findNextBroadcast(int $currentDayOfWeek, string $currentTime): ?RecurringSchedule
     {
-        // Pertama, coba cari jadwal berikutnya di hari yang sama. Ini sangat cepat.
         $nextToday = RecurringSchedule::with('video')
             ->whereJsonContains('days_of_week', $currentDayOfWeek)
             ->where('start_time', '>', $currentTime)
@@ -77,23 +67,18 @@ class RecurringBroadcastController extends Controller
             return $nextToday;
         }
 
-        // Jika tidak ada lagi jadwal hari ini, cari di hari-hari berikutnya.
         $allSchedules = RecurringSchedule::with('video')
             ->orderBy('start_time')
             ->get();
         
-        // Buat urutan hari untuk diperiksa, dimulai dari besok.
         $dayOrder = [];
         for ($i = 1; $i <= 7; $i++) {
             $dayOrder[] = ($currentDayOfWeek + $i) % 7;
         }
 
-        // Lakukan iterasi berdasarkan urutan hari yang sudah dibuat.
         foreach ($dayOrder as $day) {
             foreach ($allSchedules as $schedule) {
-                // Cek apakah jadwal ini ada di hari yang sedang diperiksa.
                 if (in_array($day, $schedule->days_of_week)) {
-                    // Jika ditemukan, ini adalah jadwal berikutnya. Langsung kembalikan.
                     return $schedule;
                 }
             }

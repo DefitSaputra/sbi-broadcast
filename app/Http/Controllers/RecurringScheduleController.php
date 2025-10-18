@@ -61,16 +61,10 @@ class RecurringScheduleController extends Controller
         ]);
     }
 
-    /**
-     * PERBAIKAN FINAL: Menggabungkan semua format data di sini.
-     */
     private function formatDataForStorage(array $data): array
     {
-        // 1. Perbaiki masalah waktu (selisih detik)
         $data['start_time'] = $data['start_time'] . ':00';
         $data['end_time'] = $data['end_time'] . ':00';
-
-        // 2. PERBAIKAN KUNCI: Paksa setiap item di 'days_of_week' menjadi integer
         $data['days_of_week'] = array_map('intval', $data['days_of_week']);
 
         return $data;

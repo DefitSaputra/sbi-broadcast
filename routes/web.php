@@ -19,18 +19,13 @@ Route::get('/', function () {
     return redirect()->route('login');
 });
 
-// --- Rute Halaman Publik (View) & API ---
-
-// Rute untuk Siaran Terjadwal (Sekali Jalan)
 Route::get('/siaran', [BroadcastController::class, 'index'])->name('siaran.index');
 Route::get('/api/schedule', [BroadcastController::class, 'getScheduleApi'])->name('api.broadcast.schedule');
 
-// Rute untuk Siaran Berulang (Rutin)
+
 Route::get('/siaran-berulang', [RecurringBroadcastController::class, 'index'])->name('siaran.recurring.index');
 Route::get('/api/recurring-schedule', [RecurringBroadcastController::class, 'getScheduleApi'])->name('api.recurring.schedule');
 
-
-// --- Grup untuk Admin yang Sudah Login & Terverifikasi ---
 Route::middleware(['auth', 'verified'])->group(function () {
     
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');

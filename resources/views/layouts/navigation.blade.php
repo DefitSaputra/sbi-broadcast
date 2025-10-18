@@ -32,8 +32,8 @@
                                 </button>
                             </x-slot>
                             <x-slot name="content">
-                                <x-dropdown-link :href="route('schedules.index')">Jadwal One-Time</x-dropdown-link>
-                                <x-dropdown-link :href="route('recurring-schedules.index')">Jadwal Recurring</x-dropdown-link>
+                                <x-dropdown-link :href="route('schedules.index')">Jadwal One-Day</x-dropdown-link>
+                                <x-dropdown-link :href="route('recurring-schedules.index')">Jadwal Multi-Day</x-dropdown-link>
                             </x-slot>
                         </x-dropdown>
                     </div>
@@ -47,8 +47,8 @@
                                 </button>
                             </x-slot>
                             <x-slot name="content">
-                                <x-dropdown-link :href="route('siaran.index')" target="_blank">Siaran One-Time</x-dropdown-link>
-                                <x-dropdown-link :href="route('siaran.recurring.index')" target="_blank">Siaran Recurring</x-dropdown-link>
+                                <x-dropdown-link :href="route('siaran.index')" target="_blank">Siaran One-Day</x-dropdown-link>
+                                <x-dropdown-link :href="route('siaran.recurring.index')" target="_blank">Siaran Multi-Day</x-dropdown-link>
                             </x-slot>
                         </x-dropdown>
                     </div>

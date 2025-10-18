@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Siaran Langsung</title>
+    <title>Siaran Langsung One-Day</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
@@ -58,9 +58,7 @@
     </div>
 
 <script>
-// ==========================================================
-// ### LOGIKA JAVASCRIPT MENGGUNAKAN VERSI PERBAIKAN ###
-// ==========================================================
+
 function broadcastManager() {
     return {
         currentBroadcast: null,
@@ -111,7 +109,6 @@ function broadcastManager() {
         playVideo(videoUrl) {
             const player = this.$refs.videoPlayer;
             if (!player || !videoUrl) return;
-            // Mengganti source video. Menggunakan player.src lebih sederhana di sini.
             player.src = videoUrl; 
             const startPlayback = () => {
                 player.muted = !this.userInteracted;

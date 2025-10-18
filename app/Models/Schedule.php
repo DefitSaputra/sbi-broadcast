@@ -20,7 +20,7 @@ class Schedule extends Model
         'title',
         'start_time',
         'end_time',
-        'running_text', // <-- Pastikan ini ada
+        'running_text',
     ];
 
     /**
@@ -34,9 +34,6 @@ class Schedule extends Model
         'end_time' => 'datetime',
     ];
 
-    /**
-     * Mendefinisikan relasi bahwa setiap jadwal memiliki satu video.
-     */
     public function video()
     {
         return $this->belongsTo(Video::class);

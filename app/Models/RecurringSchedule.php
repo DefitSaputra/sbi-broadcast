@@ -12,14 +12,14 @@ class RecurringSchedule extends Model
     protected $fillable = [
         'video_id',
         'title',
-        'days_of_week', // Menyimpan hari dalam format JSON array [1,2,3]
-        'start_time',   // Format time (08:00:00)
-        'end_time',     // Format time (09:00:00)
+        'days_of_week',
+        'start_time',  
+        'end_time',   
         'running_text'
     ];
 
     protected $casts = [
-        'days_of_week' => 'array', // Otomatis decode JSON ke array
+        'days_of_week' => 'array',
         'start_time' => 'datetime:H:i:s',
         'end_time' => 'datetime:H:i:s'
     ];
@@ -29,7 +29,6 @@ class RecurringSchedule extends Model
         return $this->belongsTo(Video::class);
     }
 
-    // Accessor untuk memudahkan pembacaan
     public function getDaysOfWeekNamesAttribute()
     {
         $dayMap = [

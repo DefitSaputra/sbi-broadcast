@@ -1,7 +1,11 @@
+<head>
+    <title>Manajemen Jadwal Siaran Multi-Day - Broadcast Management System</title>
+</head>
+
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Manajemen Jadwal Berulang') }}
+            {{ __('Manajemen Jadwal Multi-Day') }}
         </h2>
     </x-slot>
 
@@ -24,7 +28,7 @@
                             @isset($scheduleToEdit)
                                 Edit Jadwal Berulang
                             @else
-                                Tambah Jadwal Berulang
+                                Tambah Jadwal Baru
                             @endisset
                         </h3>
 

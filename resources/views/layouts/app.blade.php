@@ -19,23 +19,13 @@
         
         @stack('styles')
     </head>
-    {{-- ================================================================ --}}
-    {{-- PERUBAHAN 1: Menambahkan background image pada tag <body>      --}}
-    {{-- ================================================================ --}}
     <body class="antialiased" style="background-image: url('{{ asset('images/bg-sbi1.png') }}'); background-size: cover; background-position: center; background-attachment: fixed;">
-        {{-- ================================================================ --}}
-        {{-- PERUBAHAN 2: Menghapus bg-gray-100 dan menambah overlay gelap   --}}
-        {{-- ================================================================ --}}
         <div class="min-h-screen bg-black/20 flex flex-col">
             @include('layouts.navigation')
 
-            {{-- ================================================================ --}}
-            {{-- PERUBAHAN 3: Mengubah wrapper header menjadi "glass card"      --}}
-            {{-- ================================================================ --}}
             @if (isset($header))
                 <header class="pt-6">
                     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                        {{-- Konten header dari slot sekarang dibungkus di dalam "kartu kaca" ini --}}
                         <div class="bg-white/70 backdrop-blur-lg rounded-xl shadow-lg p-6">
                             {{ $header }}
                         </div>
@@ -47,7 +37,6 @@
                 {{ $slot }}
             </main>
 
-            {{-- Bagian Footer Utama (Sudah bagus dengan background gelap) --}}
             <footer class="bg-sbi-dark-gray text-gray-300 py-12">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -86,9 +75,6 @@
                     </div>
             </footer>
 
-            {{-- ================================================================ --}}
-            {{-- PERUBAHAN 4: Menyesuaikan sub-footer dengan gaya glassmorphism --}}
-            {{-- ================================================================ --}}
             <div class="bg-white/70 backdrop-blur-lg border-t border-white/20">
                 <div class="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8 flex justify-between items-center text-sm">
                     <a href="#" class="text-gray-700 font-medium hover:text-black">

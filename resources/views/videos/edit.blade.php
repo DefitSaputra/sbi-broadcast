@@ -5,7 +5,6 @@
 <x-app-layout>
     <x-slot name="header">
         <div class="flex flex-col md:flex-row md:items-center md:justify-between">
-            {{-- Bagian Kiri: Judul dan Deskripsi --}}
             <div>
                 <h2 class="text-2xl font-bold text-gray-900 sm:text-3xl sm:tracking-tight truncate">
                     Edit Video
@@ -15,7 +14,6 @@
                 </p>
             </div>
 
-            {{-- Bagian Kanan: Tombol Aksi "Kembali" --}}
             <div class="mt-4 flex-shrink-0 md:mt-0 md:ml-4">
                 <a href="{{ route('videos.index') }}"
                    class="inline-flex items-center rounded-lg bg-transparent px-4 py-2 text-sm font-semibold text-sbi-red shadow-sm ring-2 ring-inset ring-sbi-red hover:bg-sbi-red hover:text-white transition-all duration-200">

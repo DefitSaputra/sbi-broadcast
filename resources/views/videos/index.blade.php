@@ -3,9 +3,7 @@
 </head>
 
 <x-app-layout>
-    {{-- ====================================================== --}}
-    {{-- Header dengan Efek Glassmorphism yang Ditingkatkan   --}}
-    {{-- ====================================================== --}}
+    
     <x-slot name="header">
         <div class="bg-white/70 backdrop-blur-lg rounded-xl shadow-lg p-6">
             <div class="flex flex-col md:flex-row md:items-center md:justify-between">
@@ -31,14 +29,10 @@
         </div>
     </x-slot>
 
-    {{-- ====================================================== --}}
-    {{-- Konten Utama (tanpa background, agar transparan)     --}}
-    {{-- ====================================================== --}}
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             
             @if (session('success'))
-                {{-- Notifikasi dibuat dengan efek glassmorphism juga --}}
                 <div class="bg-sbi-green/20 backdrop-blur-lg border-l-4 border-sbi-green text-gray-800 p-4 mb-6 rounded-r-lg" role="alert">
                     <p class="font-bold">Sukses</p>
                     <p>{{ session('success') }}</p>
@@ -46,7 +40,6 @@
             @endif
 
             @if($videos->isEmpty())
-                {{-- Kartu "Belum Ada Video" dibuat dengan efek glassmorphism --}}
                 <div class="bg-white/70 backdrop-blur-lg rounded-xl shadow-lg text-center py-16">
                     <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto h-12 w-12 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
@@ -55,7 +48,6 @@
                     <p class="mt-1 text-sm text-gray-500">Unggah video pertama Anda untuk memulai.</p>
                 </div>
             @else
-                {{-- Grid video tetap sama, karena kartunya sudah putih dan akan terlihat bagus --}}
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     @foreach ($videos as $video)
                         <div class="bg-white rounded-lg shadow-lg overflow-hidden group transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">

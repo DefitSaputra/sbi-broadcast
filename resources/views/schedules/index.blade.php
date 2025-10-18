@@ -1,13 +1,13 @@
-{{-- Menggunakan layout utama aplikasi agar navigasi dan header konsisten --}}
+
 <head>
-    <title>Manajemen Jadwal - Broadcast Management System</title>
+    <title>Manajemen Jadwal Siaran One-Day - Broadcast Management System</title>
 </head>
 
 <x-app-layout>
     {{-- Judul Halaman yang akan muncul di header --}}
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Manajemen Jadwal Siaran') }}
+            {{ __('Manajemen Jadwal Siaran One-Day') }}
         </h2>
     </x-slot>
 

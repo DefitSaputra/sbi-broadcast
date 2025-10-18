@@ -31,16 +31,7 @@ class DashboardController extends Controller
 
         $upcomingSchedulesCount = Schedule::where('start_time', '>', $now)->count();
         $totalSchedules = Schedule::count() + RecurringSchedule::count();
-
-        // --- 2. Data Detail untuk Kartu Konten ---
-        
-        // Video terbaru yang diunggah
         $recentVideos = Video::latest()->take(3)->get();
-        
-        // ===================================================================
-        //           PERBAIKAN KRITIS: Menambahkan query yang hilang
-        // ===================================================================
-        // Jadwal tetap yang sedang aktif
         $activeOneTimeSchedules = Schedule::with('video:id,title')
                                           ->where('start_time', '<=', $now)
                                           ->where('end_time', '>=', $now)
@@ -70,7 +61,7 @@ class DashboardController extends Controller
             
             // Data untuk kartu konten
             'recentVideos' => $recentVideos,
-            'activeOneTimeSchedules' => $activeOneTimeSchedules, // <-- Variabel yang hilang sekarang ditambahkan
+            'activeOneTimeSchedules' => $activeOneTimeSchedules, 
             'upcomingOneTimeSchedules' => $upcomingFixedSchedules,
             'todaysRecurringSchedules' => $todaysRecurringSchedules,
         ]);
